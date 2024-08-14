@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/GourangaJha/Documents/ETEP/ETEP_3/ETEP-MLOps-MLflow-AWS/mlruns/0/f405a2bf401a4691ae0e906682e2699b/artifacts
+end_time: 1723660884501
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f405a2bf401a4691ae0e906682e2699b
+run_name: merciful-gnu-133
+run_uuid: f405a2bf401a4691ae0e906682e2699b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723660880568
+status: 3
+tags: []
+user_id: GourangaJha

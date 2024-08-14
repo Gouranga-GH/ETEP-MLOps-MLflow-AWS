@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/GourangaJha/Documents/ETEP/ETEP_3/ETEP-MLOps-MLflow-AWS/mlruns/0/2821e3533b194e79bb79c297cf671840/artifacts
+end_time: 1723662446177
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2821e3533b194e79bb79c297cf671840
+run_name: worried-fox-349
+run_uuid: 2821e3533b194e79bb79c297cf671840
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723662442375
+status: 3
+tags: []
+user_id: GourangaJha

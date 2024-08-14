@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/GourangaJha/Documents/ETEP/ETEP_3/ETEP-MLOps-MLflow-AWS/mlruns/0/3d978c939da24cef8614dc1c119adcd6/artifacts
+end_time: 1723663532046
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3d978c939da24cef8614dc1c119adcd6
+run_name: unequaled-shoat-918
+run_uuid: 3d978c939da24cef8614dc1c119adcd6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723663528168
+status: 3
+tags: []
+user_id: GourangaJha

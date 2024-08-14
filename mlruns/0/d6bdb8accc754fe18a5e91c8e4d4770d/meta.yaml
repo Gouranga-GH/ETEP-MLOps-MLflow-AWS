@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/GourangaJha/Documents/ETEP/ETEP_3/ETEP-MLOps-MLflow-AWS/mlruns/0/d6bdb8accc754fe18a5e91c8e4d4770d/artifacts
+end_time: 1723660344399
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d6bdb8accc754fe18a5e91c8e4d4770d
+run_name: monumental-trout-923
+run_uuid: d6bdb8accc754fe18a5e91c8e4d4770d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723660334402
+status: 3
+tags: []
+user_id: GourangaJha

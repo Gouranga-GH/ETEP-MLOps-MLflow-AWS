@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/GourangaJha/Documents/ETEP/ETEP_3/ETEP-MLOps-MLflow-AWS/mlruns/0/a53799f698eb4e54a7d9800f6e876c51/artifacts
+end_time: 1723660483635
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a53799f698eb4e54a7d9800f6e876c51
+run_name: sedate-fowl-834
+run_uuid: a53799f698eb4e54a7d9800f6e876c51
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723660479575
+status: 3
+tags: []
+user_id: GourangaJha

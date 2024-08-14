@@ -1,6 +1,6 @@
-from mlProject.config.configuration import ConfigurationManager
-from mlProject.components.model_evaluation import ModelEvaluation
-from mlProject import logger
+from src.ETEP_MLOps_MLflow_AWS.config.configuration import ConfigurationManager
+from src.ETEP_MLOps_MLflow_AWS.components.model_evaluation import ModelEvaluation
+from src.ETEP_MLOps_MLflow_AWS.utils import logger
 
 STAGE_NAME = "Model evaluation stage"
 

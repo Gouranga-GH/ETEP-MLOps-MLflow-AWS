@@ -26,9 +26,9 @@ model_trainer:
   test_data_path: artifacts/data_transformation/test.csv  # Path to the test data file
   model_name: model.joblib  # Name of the file where the trained model will be saved
 
-# # Configuration settings for the model evaluation stage
-# model_evaluation:
-#   root_dir: artifacts/model_evaluation  # Directory to store model evaluation artifacts
-#   test_data_path: artifacts/data_transformation/test.csv  # Path to the test data file used for evaluation
-#   model_path: artifacts/model_trainer/model.joblib  # Path to the trained model file to be evaluated
-#   metric_file_name: artifacts/model_evaluation/metrics.json  # Path to save the evaluation metrics
+# Configuration settings for the model evaluation stage
+model_evaluation:
+  root_dir: artifacts/model_evaluation  # Directory to store model evaluation artifacts
+  test_data_path: artifacts/data_transformation/test.csv  # Path to the test data file used for evaluation
+  model_path: artifacts/model_trainer/model.joblib  # Path to the trained model file to be evaluated
+  metric_file_name: artifacts/model_evaluation/metrics.json  # Path to save the evaluation metrics

@@ -2,6 +2,11 @@ import os  # Importing the os module for interacting with the operating system
 import sys  # Importing the sys module for interacting with the Python runtime environment
 import logging  # Importing the logging module to configure and use loggers
 
+# Set environment variables for MLflow
+os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/Gouranga-GH/ETEP-MLOps-MLflow-AWS.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"] = "Gouranga-GH"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "798003b0394763ed4834398be1cfc32f50ea36f1"
+
 # Defining the format of log messages including timestamp, log level, module name, and the actual log message
 logging_str = "[%(asctime)s: %(levelname)s: %(module)s: %(message)s]"
 
