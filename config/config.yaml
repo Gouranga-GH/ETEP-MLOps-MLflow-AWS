@@ -8,23 +8,23 @@ data_ingestion:
   local_data_file: artifacts/data_ingestion/data.zip  # Path to save the downloaded data file
   unzip_dir: artifacts/data_ingestion  # Directory to unzip the downloaded data file
 
-# # Configuration settings for the data validation stage
-# data_validation:
-#   root_dir: artifacts/data_validation  # Directory to store data validation artifacts
-#   unzip_data_dir: artifacts/data_ingestion/winequality-red.csv  # Path to the unzipped data file used for validation
-#   STATUS_FILE: artifacts/data_validation/status.txt  # Path to save the status of data validation
+# Configuration settings for the data validation stage
+data_validation:
+  root_dir: artifacts/data_validation  # Directory to store data validation artifacts
+  unzip_data_dir: artifacts/data_ingestion/winequality-red.csv  # Path to the unzipped data file used for validation
+  STATUS_FILE: artifacts/data_validation/status.txt  # Path to save the status of data validation
 
-# # Configuration settings for the data transformation stage
-# data_transformation:
-#   root_dir: artifacts/data_transformation  # Directory to store data transformation artifacts
-#   data_path: artifacts/data_ingestion/winequality-red.csv  # Path to the data file to be transformed
+# Configuration settings for the data transformation stage
+data_transformation:
+  root_dir: artifacts/data_transformation  # Directory to store data transformation artifacts
+  data_path: artifacts/data_ingestion/winequality-red.csv  # Path to the data file to be transformed
 
-# # Configuration settings for the model training stage
-# model_trainer:
-#   root_dir: artifacts/model_trainer  # Directory to store model training artifacts
-#   train_data_path: artifacts/data_transformation/train.csv  # Path to the training data file
-#   test_data_path: artifacts/data_transformation/test.csv  # Path to the test data file
-#   model_name: model.joblib  # Name of the file where the trained model will be saved
+# Configuration settings for the model training stage
+model_trainer:
+  root_dir: artifacts/model_trainer  # Directory to store model training artifacts
+  train_data_path: artifacts/data_transformation/train.csv  # Path to the training data file
+  test_data_path: artifacts/data_transformation/test.csv  # Path to the test data file
+  model_name: model.joblib  # Name of the file where the trained model will be saved
 
 # # Configuration settings for the model evaluation stage
 # model_evaluation:

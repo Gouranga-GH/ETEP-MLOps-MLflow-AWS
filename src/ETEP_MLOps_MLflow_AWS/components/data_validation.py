@@ -1,6 +1,6 @@
 import os
-from mlProject import logger
-from mlProject.entity.config_entity import DataValidationConfig
+from src.ETEP_MLOps_MLflow_AWS.utils import logger
+from src.ETEP_MLOps_MLflow_AWS.entity.config_entity import DataValidationConfig
 import pandas as pd
 
 

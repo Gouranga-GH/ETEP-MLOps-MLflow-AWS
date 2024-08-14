@@ -1,6 +1,6 @@
-from mlProject.config.configuration import ConfigurationManager
-from mlProject.components.data_validation import DataValiadtion
-from mlProject import logger
+from src.ETEP_MLOps_MLflow_AWS.config.configuration import ConfigurationManager
+from src.ETEP_MLOps_MLflow_AWS.components.data_validation import DataValiadtion
+from src.ETEP_MLOps_MLflow_AWS.utils import logger
 
 
 STAGE_NAME = "Data Validation stage"

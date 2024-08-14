@@ -1,9 +1,9 @@
 import pandas as pd
 import os
-from mlProject import logger
+from src.ETEP_MLOps_MLflow_AWS.utils import logger
 from sklearn.linear_model import ElasticNet
 import joblib
-from mlProject.entity.config_entity import ModelTrainerConfig
+from src.ETEP_MLOps_MLflow_AWS.entity.config_entity import ModelTrainerConfig
 
 
 
