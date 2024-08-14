@@ -1,0 +1,15 @@
+pandas  # Data manipulation and analysis library; provides data structures like DataFrames
+mlflow==2.2.2  # Machine learning lifecycle management tool, helps with experiment tracking, model deployment, and more (specific version 2.2.2)
+notebook  # Jupyter Notebook package, allows running and writing notebooks for data science and analysis
+numpy  # Fundamental package for scientific computing in Python, supports large, multi-dimensional arrays and matrices
+scikit-learn  # Machine learning library in Python; provides simple and efficient tools for data mining and data analysis
+matplotlib  # Plotting library for creating static, animated, and interactive visualizations in Python
+python-box==6.0.2  # A Python library that allows dot notation access to dictionary attributes (specific version 6.0.2)
+pyYAML  # YAML parser and emitter for Python, used for reading and writing YAML files
+tqdm  # A library for creating progress bars to track the progress of loops and other iterative tasks
+ensure==1.0.2  # Ensures variables are of expected data types (specific version 1.0.2)
+joblib  # A library for lightweight pipelining in Python, especially used for parallel computing
+types-PyYAML  # Typing stubs for pyYAML to improve code type checking and autocomplete in IDEs
+Flask  # A lightweight web application framework for Python
+Flask-Cors  # An extension for Flask that allows handling Cross-Origin Resource Sharing (CORS), making cross-domain AJAX possible
+-e .  # Install the package in editable mode, allowing you to make changes to the code and have them immediately reflected without reinstalling

@@ -22,8 +22,8 @@ list_of_files = [
     f"src/{project_name}/entity/config_entity.py",  # Module defining configuration entities
     f"src/{project_name}/constants/__init__.py",  # Package initialization file for the constants module
     "config/config.yaml",  # YAML file for storing configuration settings
-    "params.yaml",  # YAML file for storing parameters
-    "schema.yaml",  # YAML file for defining data schema
+    "params.yaml",  # YAML file for storing parameters # To be updated during model training
+    "schema.yaml",  # YAML file for defining data schema # To be updated during model validation
     "main.py",  # Main entry point for the project
     "app.py",  # Application entry point (likely for a web app or service)
     "Dockerfile",  # Dockerfile for containerizing the application
