@@ -1,3 +1,10 @@
 ElasticNet:
+  # Regularization parameter that controls the strength of the regularization. 
+  # Higher values imply stronger regularization. 
   alpha: 0.9
+
+  # Ratio of L1 regularization to L2 regularization.
+  # l1_ratio=1.0 corresponds to Lasso (L1 regularization only),
+  # l1_ratio=0.0 corresponds to Ridge (L2 regularization only),
+  # and a value between 0 and 1 corresponds to a mix of both.
   l1_ratio: 0.9
