@@ -1,0 +1,117 @@
+name: workflow
+
+# Trigger the workflow on push events to the main branch, except for changes to README.md
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+
+# Set the required permissions for the workflow
+permissions:
+  id-token: write
+  contents: read
+
+# Define the integration job for continuous integration
+jobs:
+  integration:
+    name: Continuous Integration
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    steps:
+      # Step to checkout the code from the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step to lint the code (placeholder for actual linting command)
+      - name: Lint code
+        run: echo "Linting repository"
+
+      # Step to run unit tests (placeholder for actual test command)
+      - name: Run unit tests
+        run: echo "Running unit tests"
+
+  # Define the job for building and pushing the Docker image to AWS ECR
+  build-and-push-ecr-image:
+    name: Continuous Delivery
+    needs: integration  # This job depends on the successful completion of the integration job
+    runs-on: ubuntu-latest
+    steps:
+      # Step to checkout the code from the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step to install utilities like jq and unzip
+      - name: Install Utilities
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq unzip
+
+      # Step to configure AWS credentials using secrets stored in GitHub
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # Step to log in to Amazon ECR
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      # Step to build the Docker image, tag it, and push it to Amazon ECR
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+          IMAGE_TAG: latest
+        run: |
+          # Build a docker container and push it to ECR
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          # Set the output image URI for use in subsequent steps
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          
+  # Define the job for continuous deployment to the environment
+  Continuous-Deployment:
+    needs: build-and-push-ecr-image  # This job depends on the build-and-push-ecr-image job
+    runs-on: self-hosted  # Use a self-hosted runner for deployment
+    steps:
+      # Step to checkout the code from the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Step to configure AWS credentials using secrets stored in GitHub
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # Step to log in to Amazon ECR
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      
+      # Step to pull the latest Docker image from ECR
+      - name: Pull latest images
+        run: |
+         docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+         
+      # Uncomment the following step to stop and remove the existing Docker container if it's running
+      # - name: Stop and remove container if running
+      #   run: |
+      #    docker ps -q --filter "name=mlproj" | grep -q . && docker stop mlproj && docker rm -fv mlproj
+       
+      # Step to run the pulled Docker image as a container, serving the application on port 8080
+      - name: Run Docker Image to serve users
+        run: |
+         docker run -d -p 8080:8080 --name=mlproj -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+
+      # Step to clean up previous Docker images and containers
+      - name: Clean previous images and containers
+        run: |
+         docker system prune -f
