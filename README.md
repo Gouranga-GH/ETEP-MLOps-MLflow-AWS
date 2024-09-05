@@ -1,23 +1,57 @@
-# ETEP-MLOps-MLflow-AWS
 
-# End-to-end-Machine-Learning-Project-with-MLflow
+# Wine Quality Prediction
 
+## End-to-end-Machine-Learning-Project-with-MLflow-AWS-GitHub-Actions
 
-## Workflows
+This repository contains an end-to-end machine learning pipeline built using MLOps practices and integrated with MLflow for experiment tracking. The pipeline handles various stages such as data ingestion, validation, transformation, model training, and evaluation. The project also includes a Flask web application to predict wine quality.
 
-1. Update config.yaml
-2. Update schema.yaml
-3. Update params.yaml
-4. Update the entity
-5. Update the configuration manager in src config
-6. Update the components
-7. Update the pipeline 
-8. Update the main.py
-9. Update the app.py
+## Project Overview
 
+The goal of this project is to build an end-to-end machine learning pipeline for predicting wine quality based on physicochemical properties of the wine. The pipeline is modular, allowing easy management and execution of different stages using MLOps principles.
 
+Key features:
+- Data ingestion from a source URL.
+- Data validation based on a predefined schema.
+- Data transformation including training and testing dataset splits.
+- Model training using ElasticNet regression.
+- Model evaluation with metrics tracked via MLflow.
+- A Flask web app for real-time predictions.
 
-# How to run?
+## Pipeline Stages
+
+1. **Data Ingestion**  
+   Downloads and extracts the dataset from a source URL.
+
+2. **Data Validation**  
+   Validates the dataset against a predefined schema.
+
+3. **Data Transformation**  
+   Splits the dataset into training and testing sets.
+
+4. **Model Training**  
+   Trains the ElasticNet model using the training dataset.
+
+5. **Model Evaluation**  
+   Evaluates the model on the test dataset using metrics like RMSE, MAE, and R-squared, with results logged into MLflow.
+
+## Web Application
+
+A Flask web app is provided to make predictions on new wine data. Users can input wine attributes (e.g., acidity, sugar, etc.), and the model will predict the quality of the wine.
+
+## Workflows Update order
+
+1. config.yaml
+2. schema.yaml
+3. params.yaml
+4. entity
+5. configuration manager in src config
+6. components
+7. pipeline
+8. main.py
+9. app.py
+
+## How to run?
+
 ### STEPS:
 
 Clone the repository using Bash or CMD
@@ -25,6 +59,7 @@ Clone the repository using Bash or CMD
 ```bash
 https://github.com/Gouranga-GH/ETEP-MLOps-MLflow-AWS
 ```
+
 ### STEP 01- Create a conda environment after opening the repository
 
 ```bash
@@ -35,141 +70,96 @@ conda create -n venv python=3.8 -y
 conda activate venv
 ```
 
-
 ### STEP 02- install the requirements
+
 ```bash
 pip install -r requirements.txt
 ```
 
+### STEP 03- Run the Flask app
 
 ```bash
-# Finally run the following command
 python app.py
 ```
 
-Now,
-```bash
-open up you local host and port
-```
-
-
+Now, open up your local host and port to access the app.
 
 ## MLflow
 
 [Documentation](https://mlflow.org/docs/latest/index.html)
 
-
-##### cmd
-- mlflow ui
-
-### dagshub
-[dagshub](https://dagshub.com/)
-
-MLFLOW_TRACKING_URI=https://dagshub.com/Gouranga-GH/ETEP-MLOps-MLflow-AWS.mlflow \
-MLFLOW_TRACKING_USERNAME=Gouranga-GH \
-MLFLOW_TRACKING_PASSWORD=798003b0394763ed4834398be1cfc32f50ea36f1 \
-python script.py
-
-Run this to export as env variables:
+### CMD
 
 ```bash
-
-export MLFLOW_TRACKING_URI=https://dagshub.com/Gouranga-GH/ETEP-MLOps-MLflow-AWS.mlflow
-
-export MLFLOW_TRACKING_USERNAME=Gouranga-GH  
-
-export MLFLOW_TRACKING_PASSWORD=798003b0394763ed4834398be1cfc32f50ea36f1
+mlflow ui
 ```
 
-```CMD 
+### DagsHub
 
-setx MLFLOW_TRACKING_URI "https://dagshub.com/Gouranga-GH/ETEP-MLOps-MLflow-AWS.mlflow"
-setx MLFLOW_TRACKING_USERNAME "Gouranga-GH"
-setx MLFLOW_TRACKING_PASSWORD "798003b0394763ed4834398be1cfc32f50ea36f1"
+To track your experiments with DagsHub:
+
+[dagshub](https://dagshub.com/)
+
+```bash
+MLFLOW_TRACKING_URI=Deleted_Security_Concerns
+MLFLOW_TRACKING_USERNAME=Deleted_Security_Concerns \
+MLFLOW_TRACKING_PASSWORD=Deleted_Security_Concerns \
+python script.py
 ```
-Use setx for permanent, set for session usage
 
-# AWS-CICD-Deployment-with-Github-Actions
+Run this to export environment variables:
 
-## 1. Login to AWS console.
+```bash
+export MLFLOW_TRACKING_URI=Deleted_Security_Concerns
+export MLFLOW_TRACKING_USERNAME=Deleted_Security_Concerns
+export MLFLOW_TRACKING_PASSWORD=Deleted_Security_Concerns
+```
 
-## 2. Create IAM user for deployment
+Alternatively for Windows (CMD):
 
-	#with specific access
+```bash
+setx MLFLOW_TRACKING_URI "Deleted_Security_Concerns"
+setx MLFLOW_TRACKING_USERNAME "Deleted_Security_Concerns"
+setx MLFLOW_TRACKING_PASSWORD "Deleted_Security_Concerns"
+```
 
-	1. EC2 access : It is virtual machine
+Use `setx` for permanent environment variables, `set` for session usage.
 
-	2. ECR: Elastic Container registry to save your docker image in aws
+# AWS CI/CD with GitHub Actions
 
-
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Lauch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 566373416292.dkr.ecr.ap-south-1.amazonaws.com/mlproj
-
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-# 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
+- Login to AWS Console
+- Create IAM User with EC2 and ECR access
+- Create ECR Repository
+- Create EC2 Machine (Ubuntu)
+- Install Docker on EC2
+- Configure EC2 as Self-Hosted Runner
+- Setup GitHub Secrets
 
 
 
 
-## About MLflow 
-MLflow
-
- - Its Production Grade
- - Trace all of your expriements
- - Logging & tagging your model
 
 
+## Installation
+
+### Prerequisites
+- Python 3.7 or higher
+- Docker (for containerization)
+- MLflow account (optional for experiment tracking)
+
+### Clone the repository
+
+```bash
+git clone https://github.com/Gouranga-GH/ETEP-MLOps-MLflow-AWS.git
+cd ETEP-MLOps-MLflow-AWS
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
