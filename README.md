@@ -125,7 +125,7 @@ setx MLFLOW_TRACKING_PASSWORD "Deleted_Security_Concerns"
 
 Use `setx` for permanent environment variables, `set` for session usage.
 
-# AWS CI/CD with GitHub Actions
+## AWS CI/CD with GitHub Actions
 
 - Login to AWS Console
 - Create IAM User with EC2 and ECR access
@@ -147,18 +147,6 @@ Use `setx` for permanent environment variables, `set` for session usage.
 - Docker (for containerization)
 - MLflow account (optional for experiment tracking)
 
-### Clone the repository
-
-```bash
-git clone https://github.com/Gouranga-GH/ETEP-MLOps-MLflow-AWS.git
-cd ETEP-MLOps-MLflow-AWS
-```
-
-### Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
 
 ## License
 
