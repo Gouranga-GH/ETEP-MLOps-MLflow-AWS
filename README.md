@@ -143,9 +143,19 @@ Use `setx` for permanent environment variables, `set` for session usage.
 ## Installation
 
 ### Prerequisites
-- Python 3.7 or higher
+- Python 3.8 or higher
 - Docker (for containerization)
 - MLflow account (optional for experiment tracking)
+
+## App Images
+
+![img 1](screenshots/Deployed_Home_Page.png)
+
+![img 2](screenshots/Deployed_Filled_Form.png)
+
+![img 3](screenshots/Deployed_Prediction.png)
+
+
 
 
 ## License
